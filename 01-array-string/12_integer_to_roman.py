@@ -18,6 +18,6 @@ class Solution:
             # If n in list then add the roman value to result variable
             while n <= num:
                 r += num_map[n]
-                num-=n
+                num -= n
         
         return r
