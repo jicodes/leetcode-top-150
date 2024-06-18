@@ -10,14 +10,9 @@ class Solution:
 
         def count_live_neighbors(row, col):
             directions = [
-                (-1, -1),
-                (-1, 0),
-                (-1, 1),
-                (0, -1),
-                (0, 1),
-                (1, -1),
-                (1, 0),
-                (1, 1),
+                (-1, -1),(-1, 0),(-1, 1),
+                (0, -1),         (0, 1),
+                (1, -1), (1, 0), (1, 1),
             ]
             live_neighbors = 0
             for dr, dc in directions:
