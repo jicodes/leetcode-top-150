@@ -36,9 +36,7 @@ class Solution:
                 curr = next_node  # Move curr to the next node
 
             # Reconnect the reversed sublist with the rest of the list
-            next_node = (
-                group_prev.next
-            )  # The start of the current sublist (last node after reversal)
+            next_node = group_prev.next # The start of the current sublist (last node after reversal)
             group_prev.next.next = curr  # Connect the last node of the reversed sublist to the next node after the k-group
             group_prev.next = prev  # Connect the node before the sublist to the new head of the reversed sublist
             group_prev = next_node  # Move group_prev to the end of the reversed sublist
