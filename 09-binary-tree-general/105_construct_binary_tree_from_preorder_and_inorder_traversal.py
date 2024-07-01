@@ -15,14 +15,14 @@ class Solution:
             return None
 
         # The first element in preorder is the root of the tree
-        root_val = preorder.pop(0)
+        root_val = preorder[0]
         root = TreeNode(root_val)
 
         # Find the root in inorder list to separate left and right subtrees
         mid = inorder.index(root_val)
 
         # Recursively build the left and right subtrees
-        root.left = self.buildTree(preorder[:mid], inorder[:mid])
-        root.right = self.buildTree(preorder[mid:], inorder[mid + 1 :])
+        root.left = self.buildTree(preorder[1 : mid + 1], inorder[:mid])
+        root.right = self.buildTree(preorder[mid + 1 :], inorder[mid + 1 :])
 
         return root
