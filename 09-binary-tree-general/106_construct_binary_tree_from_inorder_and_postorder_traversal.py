@@ -15,14 +15,14 @@ class Solution:
             return None
 
         # The last element in postorder is the root of the tree
-        root_val = postorder.pop()
+        root_val = postorder[-1]
         root = TreeNode(root_val)
 
         # Find the root in inorder list to separate left and right subtrees
         mid = inorder.index(root_val)
 
-        # Recursively build the right subtree first (because of the postorder property)
-        root.right = self.buildTree(inorder[mid + 1 :], postorder)
-        root.left = self.buildTree(inorder[:mid], postorder)
+        # Recursively build the left and right subtrees
+        root.left = self.buildTree(inorder[:mid], postorder[:mid])
+        root.right = self.buildTree(inorder[mid + 1 :], postorder[mid:-1])
 
         return root
