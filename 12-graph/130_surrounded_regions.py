@@ -8,7 +8,7 @@ class Solution:
         def dfs(r, c):
             if r < 0 or c < 0 or r >= rows or c >= cols or board[r][c] != "O":
                 return
-            board[r][c] = "T"  # Temporarily mark the cell to avoid flipping
+            board[r][c] = "T"  # Temporarily mark the 'O' cells to avoid flipping
             # Explore all 4 directions
             dfs(r + 1, c)
             dfs(r - 1, c)
