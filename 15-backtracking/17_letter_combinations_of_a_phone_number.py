@@ -35,7 +35,7 @@ class Solution:
             for letter in possible_letters:
                 path.append(letter)  # Choose
                 backtrack(index + 1, path)  # Explore
-                path.pop()  # Un-choose
+                path.pop()  # Un-choose (backtrack)
 
         # Initiate backtracking with an empty path and starting index of 0
         backtrack(0, [])

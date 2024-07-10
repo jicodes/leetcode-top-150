@@ -17,7 +17,7 @@ class Solution:
             for i in range(start, n + 1):
                 path.append(i)  # Choose
                 backtrack(i + 1, path)  # Explore
-                path.pop()  # Un-choose
+                path.pop()  # Un-choose (backtrack)
 
         # Initiate backtracking with an empty path and starting index of 1
         backtrack(1, [])
