@@ -19,6 +19,9 @@ class Solution:
             "9": "wxyz",
         }
 
+        # List to store the result combinations
+        result = []
+
         # Backtracking function to generate combinations
         def backtrack(index, path):
             # If the path length is equal to the digits length, we have a complete combination
@@ -34,8 +37,6 @@ class Solution:
                 backtrack(index + 1, path)  # Explore
                 path.pop()  # Un-choose
 
-        # List to store the result combinations
-        result = []
         # Initiate backtracking with an empty path and starting index of 0
         backtrack(0, [])
 
