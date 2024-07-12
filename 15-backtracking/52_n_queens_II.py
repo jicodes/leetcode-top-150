@@ -3,41 +3,37 @@ class Solution:
         # Initialize the count of solutions
         self.count = 0
 
-        # Helper function to check if placing a queen at (row, col) is valid
-        def is_valid(board, row, col):
-            # Check column
-            for i in range(row):
-                if board[i] == col:
-                    return False
-            # Check diagonal /
-            for i, j in zip(range(row - 1, -1, -1), range(col - 1, -1, -1)):
-                if board[i] == j:
-                    return False
-            # Check diagonal \
-            for i, j in zip(range(row - 1, -1, -1), range(col + 1, n)):
-                if board[i] == j:
-                    return False
-            return True
+        # Sets to keep track of columns and diagonals that are occupied
+        cols = set()
+        diag1 = set()  # / major diagonals (row - col)
+        diag2 = set()  # \ minor diagonals (row + col)
 
-        # Backtracking function to place queens
-        def backtrack(row, board):
-            # If all queens are placed, increment the count
+        def backtrack(row: int):
+            # If all rows are processed, we found a solution
             if row == n:
                 self.count += 1
                 return
+
             # Try placing a queen in each column of the current row
             for col in range(n):
-                if is_valid(board, row, col):
-                    # Place the queen
-                    board[row] = col
-                    # Move to the next row
-                    backtrack(row + 1, board)
-                    # Backtrack by resetting the current position
-                    board[row] = -1
+                # Check if the column and diagonals are not occupied
+                if col in cols or (row - col) in diag1 or (row + col) in diag2:
+                    continue
 
-        # Initialize the board with -1 (indicating no queens placed)
-        board = [-1] * n
-        # Start backtracking from the first row
-        backtrack(0, board)
+                # Place the queen
+                cols.add(col)
+                diag1.add(row - col)
+                diag2.add(row + col)
+
+                # Move to the next row
+                backtrack(row + 1)
+
+                # Remove the queen (backtrack)
+                cols.remove(col)
+                diag1.remove(row - col)
+                diag2.remove(row + col)
+
+        # Start the backtracking process from the first row
+        backtrack(0)
 
         return self.count
