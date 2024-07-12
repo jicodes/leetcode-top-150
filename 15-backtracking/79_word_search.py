@@ -8,7 +8,7 @@ class Solution:
 
         rows, cols = len(board), len(board[0])
 
-        def backtrack(row, col, index):
+        def backtrack(index, row, col):
             # If we have found the word, return True
             if index == len(word):
                 return True
@@ -28,10 +28,10 @@ class Solution:
 
             # Explore all possible directions
             found = (
-                backtrack(row + 1, col, index + 1)
-                or backtrack(row - 1, col, index + 1)
-                or backtrack(row, col + 1, index + 1)
-                or backtrack(row, col - 1, index + 1)
+                backtrack(index + 1, row + 1, col)
+                or backtrack(index + 1, row - 1, col)
+                or backtrack(index + 1, row, col + 1)
+                or backtrack(index + 1, row, col - 1)
             )
 
             # Restore the original value
@@ -41,7 +41,7 @@ class Solution:
 
         for r in range(rows):
             for c in range(cols):
-                if backtrack(r, c, 0):
+                if backtrack(0, r, c):
                     return True
 
         return False
