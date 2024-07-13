@@ -5,8 +5,8 @@ class Solution:
 
         # Sets to keep track of columns and diagonals that are occupied
         cols = set()
-        diag1 = set()  # / major diagonals (row - col)
-        diag2 = set()  # \ minor diagonals (row + col)
+        diag1 = set()  # (\ direction) major diagonals (row - col)
+        diag2 = set()  # (/ direction) minor diagonals (row + col)
 
         def backtrack(row: int):
             # If all rows are processed, we found a solution
