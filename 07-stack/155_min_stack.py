@@ -26,12 +26,13 @@ class MinStack:
         # Return the top element from the min stack, which is the minimum element
         return self.min_stack[-1] if self.min_stack else None
 
+
 # Example usage
 minStack = MinStack()
 minStack.push(-2)
 minStack.push(0)
 minStack.push(-3)
-print(minStack.getMin()) # Output: -3
+print(minStack.getMin())  # Output: -3
 minStack.pop()
-print(minStack.top())    # Output: 0
-print(minStack.getMin()) # Output: -2
+print(minStack.top())  # Output: 0
+print(minStack.getMin())  # Output: -2

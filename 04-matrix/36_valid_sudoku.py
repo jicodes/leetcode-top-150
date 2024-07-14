@@ -16,6 +16,7 @@ class Solution:
         # If they are equal, it means there are no duplicates, and the Sudoku board is valid
         return len(res) == len(set(res))
 
+
 # class Solution(object):
 #     def isValidSudoku(self, board: List[List[str]]) -> bool:
 #         res = []
